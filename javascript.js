@@ -10,8 +10,8 @@ function getPlayerSelection() {
     let playerSelection = playerInput.toLowerCase();
     while (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors") {
         console.log("Please enter Rock, Paper, or Scissors.");
-        let playerInput = prompt("Rock, Paper, or Scissors?");
-        let playerSelection = playerInput.toLowerCase();
+        playerInput = prompt("Rock, Paper, or Scissors?");
+        playerSelection = playerInput.toLowerCase();
        }
     return playerSelection;
 }
@@ -56,8 +56,8 @@ function playGame() {
     let computerScore = 0;
     let playerScore = 0;
     for (let count = 0; count < 5; count++) {
-        getComputerSelection();
-        getPlayerSelection();
+        let computerSelection = getComputerSelection();
+        let playerSelection = getPlayerSelection();
         let result = playRound(computerSelection, playerSelection);
         if (result == true) {
             playerScore++;
@@ -66,12 +66,11 @@ function playGame() {
             computerScore++;
         }
     }
-    if (playerScore > computerScore) {
-        let winner = "You!";
-    }
-    else if (computerScore > playerScore) {
-        let winner = "Computer :(";
-    }
+    let winner = "null";
+    if (playerScore > computerScore) 
+        winner = "You!";
+    else if (computerScore > playerScore) 
+        winner = "Computer :(";
 
     console.log("~~~~~~~~~~~~~~~~Game Results~~~~~~~~~~~~~~~~");
     console.log("Computer Score: " + computerScore);
