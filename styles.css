@@ -1,0 +1,20 @@
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#rock{
+
+    height: 200px;
+    width: 200px;
+}
+#paper{
+    
+    height: 200px;
+    width: 200px;
+}
+#scissors{
+    
+    height: 200px;
+    width: 200px;
+}
