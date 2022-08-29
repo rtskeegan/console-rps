@@ -1,4 +1,4 @@
-.buttons {
+#button-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,4 +17,20 @@
     
     height: 200px;
     width: 200px;
+}
+h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#scores {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

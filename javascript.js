@@ -5,16 +5,7 @@ function getComputerSelection() {
     return computerSelection;
 }
 
-function getPlayerSelection() {
-    let playerInput = prompt("Rock, Paper, or Scissors?");
-    let playerSelection = playerInput.toLowerCase();
-    while (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors") {
-        console.log("Please enter Rock, Paper, or Scissors.");
-        playerInput = prompt("Rock, Paper, or Scissors?");
-        playerSelection = playerInput.toLowerCase();
-       }
-    return playerSelection;
-}
+
 
 function playRound(computerSelection, playerSelection) {
     const rock = "rock";
@@ -53,30 +44,33 @@ function playRound(computerSelection, playerSelection) {
 }
 
 function playGame() {
-    let computerScore = 0;
-    let playerScore = 0;
-    for (let count = 0; count < 5; count++) {
-        let computerSelection = getComputerSelection();
-        let playerSelection = getPlayerSelection();
-        let result = playRound(computerSelection, playerSelection);
-        if (result == true) {
-            playerScore++;
+    let computerSelection = getComputerSelection();
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            let playerScore = 0;
+            let computerScore = 0;
+            while (playerScore < 5 && computerScore < 5) {
+                let playerSelection = null;
+                playerSelection = button.id;
+                let scoreCounter = playRound(computerSelection, playerSelection);
+                console.log(scoreCounter);
+                if (scoreCounter == 1) {
+                    playerScore++;
+                    console.log(playerScore); 
+                    break;
+                }
+                else if (scoreCounter == 0) {
+                    computerScore++;
+                    console.log(computerScore);
+                    break;
+                }
+                else {
+                    break;
+                }
         }
-        else if (result == false) {
-            computerScore++;
-        }
-    }
-    let winner = "null";
-    if (playerScore > computerScore) 
-        winner = "You!";
-    else if (computerScore > playerScore) 
-        winner = "Computer :(";
-
-    console.log("~~~~~~~~~~~~~~~~Game Results~~~~~~~~~~~~~~~~");
-    console.log("Computer Score: " + computerScore);
-    console.log("Player Score: " + playerScore);
-    console.log("Winner: " + winner);
-    
+        });
+    }); 
 }
 
 playGame();
