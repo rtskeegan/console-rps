@@ -57,6 +57,7 @@ function playGame() {
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             i++;
+            console.log(i);
             let computerSelection = getComputerSelection();
             while (playerScore < 5 && computerScore < 5) {
                 let playerSelection = null;
@@ -79,9 +80,40 @@ function playGame() {
                     break;
                 }
             }
+            if (playerScore == 5) {
+                const winner = document.createElement('div');
+                gameheader.appendChild(winner);
+                winner.textContent = "CONGRATULATIONS: YOU WON! PLEASE REFRESH THE PAGE";
+                return;
+            }
+            else if (computerScore == 5) {
+                let styles = `
+                #popup {
+                    width: 100px;
+                    height: 100px;
+                    background-color: red;
+                
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                
+                    margin: auto;
+                }    
+            `;
+                let styleSheet = document.createElement("style");
+                styleSheet.innerText = styles;
+                document.head.appendChild(styleSheet);
+                const losewindow = document.createElement('div');
+                body.appendChild(losewindow);
+
+                losewindow.style.backgroundColor = "black"
+            }
             
         });
     }); 
+    return;
 }
 
 playGame();
