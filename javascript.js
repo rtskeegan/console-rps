@@ -44,12 +44,20 @@ function playRound(computerSelection, playerSelection) {
 }
 
 function playGame() {
-    let computerSelection = getComputerSelection();
+    let i = 0;
+    let playerScore = 0;
+    let computerScore = 0;
+    const pscore = document.createElement('div');
+    player.appendChild(pscore);
+    pscore.textContent = playerScore;
+    const cscore = document.createElement('div');
+    computer.appendChild(cscore);
+    cscore.textContent = playerScore;
     const buttons = document.querySelectorAll('button');
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
-            let playerScore = 0;
-            let computerScore = 0;
+            i++;
+            let computerSelection = getComputerSelection();
             while (playerScore < 5 && computerScore < 5) {
                 let playerSelection = null;
                 playerSelection = button.id;
@@ -58,17 +66,20 @@ function playGame() {
                 if (scoreCounter == 1) {
                     playerScore++;
                     console.log(playerScore); 
+                    pscore.textContent = playerScore;
                     break;
                 }
                 else if (scoreCounter == 0) {
                     computerScore++;
                     console.log(computerScore);
+                    cscore.textContent = computerScore;
                     break;
                 }
                 else {
                     break;
                 }
-        }
+            }
+            
         });
     }); 
 }
