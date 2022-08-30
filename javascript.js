@@ -1,3 +1,7 @@
+function disable() {
+    document.querySelectorAll('button').forEach(el => el.setAttribute('disabled', true));
+  }
+
 function getComputerSelection() {
     const choiceOptions = ['rock','paper','scissors'];
     const rng = Math.floor(Math.random() * 3);
@@ -81,16 +85,12 @@ function playGame() {
                 }
             }
             if (playerScore == 5) {
-                const winner = document.createElement('div');
-                gameheader.appendChild(winner);
-                winner.textContent = "CONGRATULATIONS: YOU WON! PLEASE REFRESH THE PAGE";
-                return;
-            }
-            else if (computerScore == 5) {
+                disable();
                 let styles = `
                 #popup {
-                    width: 100px;
-                    height: 100px;
+                    color: white;
+                    width: 30rem;
+                    height: 30rem;
                     background-color: red;
                 
                     position: absolute;
@@ -100,15 +100,64 @@ function playGame() {
                     right: 0;
                 
                     margin: auto;
+                #popup .innercontents {
+                    color: white;
+
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+
+                    margin: auto;
+                    }
+                }    
+            `;
+                let styleSheet = document.createElement("style");
+                styleSheet.innerText = styles;
+                document.head.appendChild(styleSheet);
+                const winwindow = document.createElement('div');
+                popup.appendChild(winwindow);
+                winwindow.textContent = "You win!";
+
+                return;
+            }
+            else if (computerScore == 5) {
+                disable();
+                let styles = `
+                #popup {
+                    width: 25rem;
+                    height: 25rem;
+                    background-color: red;
+                
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                
+                    margin: auto;
+                #popup .innercontents {
+                    color: white;
+
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+
+                    margin: auto;
+                    }    
                 }    
             `;
                 let styleSheet = document.createElement("style");
                 styleSheet.innerText = styles;
                 document.head.appendChild(styleSheet);
                 const losewindow = document.createElement('div');
-                body.appendChild(losewindow);
+                popup.appendChild(losewindow);
+                losewindow.textContent = "You lose!";
 
-                losewindow.style.backgroundColor = "black"
+
             }
             
         });
