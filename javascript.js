@@ -88,28 +88,24 @@ function playGame() {
                 disable();
                 let styles = `
                 #popup {
+                    display: flex;
                     color: white;
                     width: 30rem;
                     height: 30rem;
                     background-color: red;
+                    justify-content: center;
+                    align-items: center;
                 
                     position: absolute;
+                    z-index: 10000;
                     top: 0;
                     bottom: 0;
                     left: 0;
                     right: 0;
                 
                     margin: auto;
-                #popup .innercontents {
-                    color: white;
-
-                    position: absolute;
-                    top: 0;
-                    bottom: 0;
-                    left: 0;
-                    right: 0;
-
-                    margin: auto;
+                #popup>div {
+                                        
                     }
                 }    
             `;
@@ -120,33 +116,29 @@ function playGame() {
                 popup.appendChild(winwindow);
                 winwindow.textContent = "You win!";
 
-                return;
             }
             else if (computerScore == 5) {
                 disable();
                 let styles = `
                 #popup {
-                    width: 25rem;
-                    height: 25rem;
-                    background-color: red;
-                
-                    position: absolute;
-                    top: 0;
-                    bottom: 0;
-                    left: 0;
-                    right: 0;
-                
-                    margin: auto;
-                #popup .innercontents {
+                    display: flex;
                     color: white;
-
+                    width: 30rem;
+                    height: 30rem;
+                    background-color: red;
+                    justify-content: center;
+                    align-items: center;
+                
                     position: absolute;
+                    z-index: 10000;
                     top: 0;
                     bottom: 0;
                     left: 0;
                     right: 0;
-
+                
                     margin: auto;
+                #popup>div {
+                    display: flex;
                     }    
                 }    
             `;
@@ -156,7 +148,6 @@ function playGame() {
                 const losewindow = document.createElement('div');
                 popup.appendChild(losewindow);
                 losewindow.textContent = "You lose!";
-
 
             }
             

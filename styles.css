@@ -49,6 +49,10 @@ h2 {
     align-items: center;
 }
 footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: min-content;
     display: flex;
     justify-content: center;
     align-items: center;
